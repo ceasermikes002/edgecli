@@ -129,8 +129,35 @@ body {
 .tagline {
     font-size: var(--font-size-sm);
     opacity: 0.9;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-md);
     font-weight: 300;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.github-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.github-link svg {
+    width: 24px;
+    height: 24px;
 }
 
 .nav-menu {
