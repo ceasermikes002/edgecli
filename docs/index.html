@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EdgeCLI - AI-powered CLI tool for intelligent log analysis and incident triage">
+    <title>EdgeCLI Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <h1>EdgeCLI</h1>
+            <p class="tagline">Instant AI-Powered Triage</p>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#commands">Commands</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#voice-alerts">Voice Alerts</a></li>
+            <li><a href="#configuration">Configuration</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#api-reference">API Reference</a></li>
+            <li><a href="#uninstall">Uninstall</a></li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <p>Built for HackLondon 2026</p>
+            <p class="version">v1.0.0</p>
+        </div>
+    </nav>
+    
+    <main class="content">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <h1>EdgeCLI Documentation</h1>
+            <p class="lead">AI-powered CLI tool for intelligent log analysis and incident triage using Google Gemini API.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="icon">🔍</span>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Watch log files or stdin streams with instant AI analysis</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🤖</span>
+                    <h3>AI-Powered Triage</h3>
+                    <p>Automatic severity classification with confidence scoring</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🔬</span>
+                    <h3>Deep Analysis</h3>
+                    <p>Root cause detection with automated patch generation</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🎙️</span>
+                    <h3>Voice Alerts</h3>
+                    <p>AI voice notifications with 30+ professional voices</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation" class="section">
+            <h2>Installation</h2>
+            
+            <h3>Requirements</h3>
+            <ul>
+                <li>Node.js >= 18.0.0</li>
+                <li>npm or yarn package manager</li>
+                <li>Google Gemini API key (<a href="https://aistudio.google.com/app/apikey" target="_blank">Get one here</a>)</li>
+                <li>ElevenLabs API key (optional, for voice alerts)</li>
+            </ul>
+
+            <h3>For Production (Published Package)</h3>
+            <p>Install EdgeCLI from npm:</p>
+            <div class="code-block">
+                <pre><code>npm install -g @ceasermikes/edgecli</code></pre>
+            </div>
+            <p>That's it! No cloning, no setup - just install and go.</p>
+            
+            <h3>For Local Development</h3>
+            <p>If you're developing or testing EdgeCLI locally:</p>
+            <div class="code-block">
+                <pre><code># Navigate to the project directory
+cd edgecli
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Link globally for local development
+npm link
+
+# Verify installation
+edgecli --help</code></pre>
+            </div>
+
+            <h3>For Production (When Published)</h3>
+            <p>Once EdgeCLI is published to npm:</p>
+            <div class="code-block">
+                <pre><code>npm install -g edgecli</code></pre>
+            </div>
+            <p>That's it! No cloning, no setup - just install and go.</p>
+            
+            <div class="info-box" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); margin-top: 1.5rem;">
+                <h4 style="color: white; margin-top: 0;">Development vs Production</h4>
+                <ul style="color: white;">
+                    <li><strong>npm install -g @ceasermikes/edgecli:</strong> Installs the published package from npm registry. Use this for production deployments.</li>
+                    <li><strong>npm link:</strong> Creates a symlink to your local development version. Changes to the code are reflected immediately after rebuilding.</li>
+                </ul>
+                <p style="color: white; margin-bottom: 0;"><strong>Package URL:</strong> <a href="https://www.npmjs.com/package/@ceasermikes/edgecli" target="_blank" style="color: white; text-decoration: underline;">npmjs.com/package/@ceasermikes/edgecli</a></p>
+            </div>
+        </section>
+
+        <!-- Getting Started Section -->
+        <section id="getting-started" class="section">
+            <h2>Getting Started</h2>
+            
+            <h3>Step 1: Initial Setup</h3>
+            <p>Run the interactive setup wizard to configure your API keys:</p>
+            <div class="code-block">
+                <pre><code>edgecli init</code></pre>
+            </div>
+
+            
+            <p>The wizard will guide you through:</p>
+            <ul>
+                <li>Entering your Gemini API key (securely)</li>
+                <li>Selecting a Gemini model</li>
+                <li>Optionally configuring ElevenLabs voice alerts</li>
+                <li>Choosing a voice and severity threshold</li>
+            </ul>
+
+            <h3>Step 2: Test the Installation</h3>
+            <p>Run the simulation mode to verify everything works:</p>
+            <div class="code-block">
+                <pre><code>edgecli simulate</code></pre>
+            </div>
+
+            <h3>Step 3: Start Monitoring</h3>
+            <p>Watch a log file or pipe output from your application:</p>
+            <div class="code-block">
+                <pre><code># Watch a log file
+edgecli watch app.log
+
+# Watch live output
+npm run dev 2>&1 | edgecli watch --stdin</code></pre>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands" class="section">
+            <h2>Commands</h2>
+            
+            <div class="command-card">
+                <h3><code>edgecli init</code></h3>
+                <p>Interactive setup wizard for configuring API keys and preferences.</p>
+                <div class="code-block">
+                    <pre><code>edgecli init</code></pre>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h3><code>edgecli watch [file]</code></h3>
+                <p>Watch and triage logs in real-time from a file or stdin.</p>
+                <div class="code-block">
+                    <pre><code># Watch a file
+edgecli watch app.log
+
+# Watch stdin
+npm run dev 2>&1 | edgecli watch --stdin
+
+# Enable voice alerts
+edgecli watch app.log --voice
+
+# Disable voice alerts
+edgecli watch app.log --no-voice</code></pre>
+                </div>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>--stdin</code> - Read from stdin instead of file</li>
+                    <li><code>--voice</code> - Force enable voice alerts</li>
+                    <li><code>--no-voice</code> - Force disable voice alerts</li>
+                </ul>
+                
+                <div class="info-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin-top: 1.5rem;">
+                    <h4 style="color: white; margin-top: 0;">Understanding the Pipe Command</h4>
+                    <p style="color: white;">Let's break down this command: <code style="background: rgba(255,255,255,0.2); color: white;">npm run dev 2>&1 | edgecli watch --stdin</code></p>
+                    <ul style="color: white;">
+                        <li><strong>npm run dev</strong> - Runs your development server</li>
+                        <li><strong>2>&1</strong> - Redirects stderr (error messages) to stdout (standard output)
+                            <ul>
+                                <li><code>2</code> = stderr (file descriptor 2)</li>
+                                <li><code>&1</code> = stdout (file descriptor 1)</li>
+                                <li>This ensures both normal output AND errors are captured</li>
+                            </ul>
+                        </li>
+                        <li><strong>|</strong> (pipe) - Takes the output from the left command and feeds it as input to the right command</li>
+                        <li><strong>edgecli watch --stdin</strong> - Receives the piped output and analyzes it in real-time</li>
+                    </ul>
+                    <p style="color: white; margin-bottom: 0;"><strong>Result:</strong> Your app runs normally, but EdgeCLI monitors all output (including errors) and provides AI-powered triage automatically!</p>
+                </div>
+            </div>
+
+
+            <div class="command-card">
+                <h3><code>edgecli suggest</code></h3>
+                <p>Generate patch suggestions for a specific file.</p>
+                <div class="code-block">
+                    <pre><code>edgecli suggest --file src/auth.js</code></pre>
+                </div>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>--file &lt;path&gt;</code> - File path to analyze (required)</li>
+                    <li><code>--incident &lt;id&gt;</code> - Incident ID to reference (optional)</li>
+                </ul>
+            </div>
+
+            <div class="command-card">
+                <h3><code>edgecli simulate</code></h3>
+                <p>Generate mock errors for testing and demonstration.</p>
+                <div class="code-block">
+                    <pre><code>edgecli simulate</code></pre>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h3><code>edgecli stats</code></h3>
+                <p>Display session statistics and performance metrics.</p>
+                <div class="code-block">
+                    <pre><code>edgecli stats</code></pre>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h3><code>edgecli voice</code></h3>
+                <p>Configure voice alerts interactively or with flags.</p>
+                <div class="code-block">
+                    <pre><code># Interactive configuration
+edgecli voice
+
+# Quick enable/disable
+edgecli voice --enable
+edgecli voice --disable
+
+# Test voice output
+edgecli voice --test</code></pre>
+                </div>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>--enable</code> - Enable voice alerts</li>
+                    <li><code>--disable</code> - Disable voice alerts</li>
+                    <li><code>--test</code> - Test voice output with sample alert</li>
+                    <li><code>--configure</code> - Interactive configuration menu</li>
+                </ul>
+            </div>
+
+            <div class="command-card">
+                <h3><code>edgecli uninstall</code></h3>
+                <p>Completely remove EdgeCLI from your system, including configuration and the npm package.</p>
+                <div class="code-block">
+                    <pre><code>edgecli uninstall</code></pre>
+                </div>
+                <p class="warning">⚠️ This will permanently delete all configuration files, API keys, session data, AND uninstall the npm package. You'll need to reinstall with <code>npm install -g edgecli</code> to use EdgeCLI again.</p>
+                
+                <div class="info-box" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); margin-top: 1.5rem;">
+                    <h4 style="color: white; margin-top: 0;">What Gets Removed</h4>
+                    <ul style="color: white;">
+                        <li>Configuration file (Gemini & ElevenLabs API keys)</li>
+                        <li>Voice alert settings and preferences</li>
+                        <li>Session statistics and history</li>
+                        <li>Configuration directory</li>
+                        <li><strong>EdgeCLI npm package (globally installed)</strong></li>
+                    </ul>
+                    <p style="color: white; margin-bottom: 0;"><strong>Note:</strong> This is a complete uninstall. After running this command, EdgeCLI will be completely removed from your system.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <h2>Features</h2>
+            
+            <h3>Two-Stage Triage System</h3>
+            <p>EdgeCLI uses a sophisticated two-stage approach to incident analysis:</p>
+            
+            <div class="info-box">
+                <h4>Stage 1: Light Triage (Fast Assessment)</h4>
+                <p>Quick initial classification to determine severity and confidence:</p>
+                <ul>
+                    <li><strong>Severity Classification:</strong> LOW, MEDIUM, HIGH, CRITICAL</li>
+                    <li><strong>Hypothesis Generation:</strong> AI predicts what's wrong</li>
+                    <li><strong>Confidence Scoring:</strong> 0-100% confidence level</li>
+                    <li><strong>Auto-escalation:</strong> Triggers deep analysis if confidence < 65%</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Stage 2: Deep Analysis (Root Cause Investigation)</h4>
+                <p>Detailed investigation when light triage needs more information:</p>
+                <ul>
+                    <li><strong>Root Cause Detection:</strong> Identifies the underlying issue</li>
+                    <li><strong>Affected Files:</strong> Lists impacted code files</li>
+                    <li><strong>Patch Generation:</strong> Creates diff-format fixes</li>
+                    <li><strong>Detailed Explanation:</strong> Comprehensive analysis report</li>
+                </ul>
+            </div>
+
+            <h3>Severity Levels</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Severity</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-low">LOW</span></td>
+                        <td>Minor issue, system functional</td>
+                        <td>Deprecation warning</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-medium">MEDIUM</span></td>
+                        <td>Moderate issue, degraded performance</td>
+                        <td>Missing optional file</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                        <td>Serious issue, major functionality broken</td>
+                        <td>Database connection failed</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-critical">CRITICAL</span></td>
+                        <td>System down, immediate action required</td>
+                        <td>Server crash, data loss</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!-- Voice Alerts Section -->
+        <section id="voice-alerts" class="section">
+            <h2>Voice Alerts</h2>
+            <p class="lead">Professional AI voice notifications powered by ElevenLabs.</p>
+            
+            <h3>Voice Models</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Speed</th>
+                        <th>Quality</th>
+                        <th>Cost</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Multilingual V2 ⭐</td>
+                        <td>Medium</td>
+                        <td>Highest</td>
+                        <td>1x</td>
+                        <td>Professional alerts, 74 languages</td>
+                    </tr>
+                    <tr>
+                        <td>Turbo V2.5</td>
+                        <td>Fast</td>
+                        <td>High</td>
+                        <td>1x</td>
+                        <td>Real-time monitoring</td>
+                    </tr>
+                    <tr>
+                        <td>Flash V2.5</td>
+                        <td>Fastest (&lt;75ms)</td>
+                        <td>Good</td>
+                        <td>0.5x</td>
+                        <td>High-frequency alerts</td>
+                    </tr>
+                    <tr>
+                        <td>Flash V2</td>
+                        <td>Fast</td>
+                        <td>Good</td>
+                        <td>1x</td>
+                        <td>Standard monitoring</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Available Voices</h3>
+            <p>Choose from 30+ professional voices with various accents and styles:</p>
+            
+            <div class="voice-grid">
+                <div class="voice-category">
+                    <h4>Female Voices (13)</h4>
+                    <ul>
+                        <li><strong>Alice</strong> - British, confident (news style)</li>
+                        <li><strong>Charlotte</strong> - English-Swedish, seductive</li>
+                        <li><strong>Emily</strong> - American, calm (meditation)</li>
+                        <li><strong>Rachel</strong> - American, calm (most popular)</li>
+                        <li><strong>Sarah</strong> - American, confident & warm</li>
+                        <li>And 8 more...</li>
+                    </ul>
+                </div>
+                <div class="voice-category">
+                    <h4>Male Voices (17)</h4>
+                    <ul>
+                        <li><strong>George</strong> ⭐ - British, raspy (default)</li>
+                        <li><strong>Daniel</strong> - British, news presenter</li>
+                        <li><strong>Brian</strong> - American, deep narration</li>
+                        <li><strong>Charlie</strong> - Australian, casual</li>
+                        <li><strong>Adam</strong> - American, deep</li>
+                        <li>And 12 more...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Severity Thresholds</h3>
+            <p>Control which alerts trigger voice notifications:</p>
+            <ul>
+                <li><strong>Info and above:</strong> All alerts (development/learning)</li>
+                <li><strong>Warning and above ⭐:</strong> Recommended for production</li>
+                <li><strong>Error and above:</strong> High-traffic systems</li>
+                <li><strong>Critical only:</strong> Mission-critical systems</li>
+            </ul>
+        </section>
+
+
+        <!-- Configuration Section -->
+        <section id="configuration" class="section">
+            <h2>Configuration</h2>
+            
+            <h3>Configuration File Location</h3>
+            <p>EdgeCLI stores configuration in your system's config directory:</p>
+            <ul>
+                <li><strong>macOS:</strong> <code>~/Library/Preferences/edgecli-nodejs/</code></li>
+                <li><strong>Linux:</strong> <code>~/.config/edgecli-nodejs/</code></li>
+                <li><strong>Windows:</strong> <code>%APPDATA%\edgecli-nodejs\Config\</code></li>
+            </ul>
+
+            <h3>Configuration Structure</h3>
+            <div class="code-block">
+                <pre><code>{
+  "apiKey": "your-gemini-api-key",
+  "model": "gemini-2.5-flash",
+  "elevenlabs": {
+    "apiKey": "your-elevenlabs-api-key",
+    "enabled": true,
+    "model": "eleven_multilingual_v2",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "severityThreshold": "warning",
+    "streaming": true
+  }
+}</code></pre>
+            </div>
+
+            <h3>Environment Variables</h3>
+            <p>Override configuration with environment variables:</p>
+            <div class="code-block">
+                <pre><code># Linux/macOS
+export GEMINI_API_KEY="your-gemini-key"
+export ELEVENLABS_API_KEY="your-elevenlabs-key"
+
+# Windows PowerShell
+$env:GEMINI_API_KEY="your-gemini-key"
+$env:ELEVENLABS_API_KEY="your-elevenlabs-key"</code></pre>
+            </div>
+
+            <h3>Available Gemini Models</h3>
+            <ul>
+                <li><strong>gemini-2.5-flash</strong> ⭐ (Recommended) - Latest flash model, fast and efficient</li>
+                <li><strong>gemini-2.5-pro</strong> - Most capable 2.5 model for complex analysis</li>
+                <li><strong>gemini-2.0-flash</strong> - Stable 2.0 flash model</li>
+                <li><strong>gemini-3-flash</strong> - Next-gen flash model</li>
+                <li><strong>gemini-3-pro</strong> - Next-gen pro model with maximum capability</li>
+            </ul>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="section">
+            <h2>Examples</h2>
+            
+            <h3>Basic Log Monitoring</h3>
+            <div class="code-block">
+                <pre><code># Watch a log file
+edgecli watch /var/log/app.log
+
+# Watch with voice alerts
+edgecli watch /var/log/app.log --voice</code></pre>
+            </div>
+
+            <h3>Development Workflow</h3>
+            <div class="code-block">
+                <pre><code># Monitor your dev server
+npm run dev 2>&1 | edgecli watch --stdin --voice
+
+# Monitor tests
+npm test 2>&1 | edgecli watch --stdin</code></pre>
+            </div>
+
+
+            <h3>Production Monitoring</h3>
+            <div class="code-block">
+                <pre><code># Monitor production logs with critical-only alerts
+edgecli voice
+# Set threshold to "Critical only"
+
+edgecli watch /var/log/production.log --voice</code></pre>
+            </div>
+
+            <h3>CI/CD Integration</h3>
+            <div class="code-block">
+                <pre><code># In your CI pipeline
+npm run build 2>&1 | edgecli watch --stdin --no-voice
+
+# Generate patch suggestions
+edgecli suggest --file src/problematic-file.js</code></pre>
+            </div>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section id="troubleshooting" class="section">
+            <h2>Troubleshooting</h2>
+            
+            <h3>No Audio from Voice Alerts</h3>
+            <div class="troubleshoot-item">
+                <h4>Problem: Voice alerts enabled but no audio</h4>
+                <p><strong>Solutions:</strong></p>
+                <ol>
+                    <li>Verify API key is configured: <code>edgecli voice --test</code></li>
+                    <li>Check severity threshold matches alert level</li>
+                    <li>Ensure system volume is not muted</li>
+                    <li>Verify speakers/headphones are connected</li>
+                    <li>Check debug output for <code>[Voice] Speaking:</code> messages</li>
+                </ol>
+            </div>
+
+            <h3>API Key Issues</h3>
+            <div class="troubleshoot-item">
+                <h4>Problem: "API key not configured"</h4>
+                <p><strong>Solution:</strong></p>
+                <div class="code-block">
+                    <pre><code>edgecli init</code></pre>
+                </div>
+                <p>Or set environment variable:</p>
+                <div class="code-block">
+                    <pre><code>export GEMINI_API_KEY="your-key"</code></pre>
+                </div>
+            </div>
+
+            <h3>Model Errors</h3>
+            <div class="troubleshoot-item">
+                <h4>Problem: "Model not found" or 404 errors</h4>
+                <p><strong>Solution:</strong> Update to a supported model:</p>
+                <div class="code-block">
+                    <pre><code>edgecli init
+# Select gemini-2.5-flash (recommended)</code></pre>
+                </div>
+            </div>
+
+            <h3>Windows Audio Issues</h3>
+            <div class="troubleshoot-item">
+                <h4>Problem: Audio player fails on Windows</h4>
+                <p><strong>Solutions:</strong></p>
+                <ol>
+                    <li>Check Windows Sound settings</li>
+                    <li>Ensure PowerShell has audio permissions</li>
+                    <li>Try running as Administrator</li>
+                    <li>Restart audio service: <code>Restart-Service -Name Audiosrv</code></li>
+                </ol>
+            </div>
+        </section>
+
+
+        <!-- API Reference Section -->
+        <section id="api-reference" class="section">
+            <h2>API Reference</h2>
+            
+            <h3>Triage Result Structure</h3>
+            <div class="code-block">
+                <pre><code>{
+  "severity": "MEDIUM" | "LOW" | "HIGH" | "CRITICAL",
+  "hypothesis": "Description of the issue",
+  "confidence": 0.90,  // 0-1 scale
+  "needs_deeper": false
+}</code></pre>
+            </div>
+
+            <h3>Deep Analysis Result Structure</h3>
+            <div class="code-block">
+                <pre><code>{
+  "root_cause": "Detailed explanation",
+  "affected_files": ["file1.js", "file2.js"],
+  "patch": "--- a/file.js\n+++ b/file.js\n..."
+}</code></pre>
+            </div>
+
+            <h3>Session Statistics</h3>
+            <div class="code-block">
+                <pre><code>{
+  "duration": "21s",
+  "total_triages": 1,
+  "severity_breakdown": {
+    "low": 0,
+    "medium": 1,
+    "high": 0,
+    "critical": 0
+  },
+  "deep_analyses": 1,
+  "time_saved": "~0 minutes"
+}</code></pre>
+            </div>
+
+            <h3>Exit Codes</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>Success</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>General error (API failure, invalid config, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td>130</td>
+                        <td>User interrupted (Ctrl+C)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Uninstall Section -->
+        <section id="uninstall" class="section">
+            <h2>Uninstall</h2>
+            
+            <h3>Complete Removal</h3>
+            <p>EdgeCLI provides a single command to completely remove everything:</p>
+            <div class="code-block">
+                <pre><code>edgecli uninstall</code></pre>
+            </div>
+            
+            <p>This command will:</p>
+            <ol>
+                <li>Show you exactly what will be removed</li>
+                <li>Display your current configuration</li>
+                <li>Ask for confirmation (twice for safety)</li>
+                <li>Remove all configuration files and data</li>
+                <li><strong>Uninstall the EdgeCLI npm package</strong></li>
+            </ol>
+            
+            <p class="warning">⚠️ This is a complete uninstall. After running this command, EdgeCLI will be completely removed from your system. You'll need to run <code>npm install -g edgecli</code> to use it again.</p>
+
+            <h3>What Gets Removed</h3>
+            <ul>
+                <li><strong>Configuration file:</strong> Contains your Gemini and ElevenLabs API keys</li>
+                <li><strong>Voice settings:</strong> All voice alert preferences</li>
+                <li><strong>Session statistics:</strong> Historical usage data</li>
+                <li><strong>Configuration directory:</strong> The entire config folder</li>
+                <li><strong>npm package:</strong> The globally installed EdgeCLI package</li>
+            </ul>
+
+            <h3>Why One Command?</h3>
+            <p>We designed <code>edgecli uninstall</code> to handle everything because:</p>
+            <ul>
+                <li><strong>Convenience:</strong> No need to remember multiple commands</li>
+                <li><strong>Completeness:</strong> Ensures nothing is left behind</li>
+                <li><strong>Safety:</strong> Double confirmation prevents accidents</li>
+                <li><strong>Transparency:</strong> Shows exactly what will be removed before doing it</li>
+            </ul>
+
+            <h3>Reinstalling</h3>
+            <p>To reinstall EdgeCLI after uninstalling:</p>
+            
+            <p><strong>For local development:</strong></p>
+            <div class="code-block">
+                <pre><code># Navigate to project directory
+cd /path/to/edgecli
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Link globally
+npm link
+
+# Run setup wizard
+edgecli init</code></pre>
+            </div>
+            
+            <p><strong>For production (published package):</strong></p>
+            <div class="code-block">
+                <pre><code># Install the package
+npm install -g @ceasermikes/edgecli
+
+# Run setup wizard
+edgecli init</code></pre>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Built for HackLondon 2026</p>
+                <p>EdgeCLI v1.0.0 | <a href="https://aistudio.google.com/app/apikey" target="_blank">Get Gemini API Key</a> | <a href="https://elevenlabs.io/app/settings/api-keys" target="_blank">Get ElevenLabs API Key</a></p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

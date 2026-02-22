@@ -4,6 +4,8 @@ AI-powered CLI tool for intelligent log analysis and incident triage using Googl
 
 Built for HackLondon 2026 :)
 
+**npm Package:** [@ceasermikes/edgecli](https://www.npmjs.com/package/@ceasermikes/edgecli)
+
 ## Features
 
 - 🔍 Real-time log watching (files or stdin)
@@ -17,11 +19,32 @@ Built for HackLondon 2026 :)
 
 ## Installation
 
+### For Production (Published Package)
+
 ```bash
-npm install -g edgecli
+npm install -g @ceasermikes/edgecli
 ```
 
 That's it! No cloning, no setup - just install and go.
+
+### For Development (Local)
+
+```bash
+# Clone or navigate to the project
+cd edgecli
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Link globally for local development
+npm link
+
+# Now you can use edgecli command
+edgecli --help
+```
 
 ## Setup
 
@@ -156,6 +179,19 @@ edgecli watch app.log
 
 # See AI triage in real-time!
 ```
+
+## Documentation
+
+Comprehensive HTML documentation is available in the `docs/` folder. Open `docs/index.html` in your browser for:
+
+- Complete command reference
+- Voice alerts guide
+- Configuration options
+- Troubleshooting tips
+- API reference
+- Examples and use cases
+
+Or view online at: [EdgeCLI Documentation](#) (coming soon)
 
 ## Development
 

@@ -6,6 +6,7 @@ import { suggestCommand } from './commands/suggest';
 import { simulateCommand } from './commands/simulate';
 import { statsCommand } from './commands/stats';
 import { voiceCommand } from './commands/voice';
+import { uninstallCommand } from './commands/uninstall';
 import { UIComponents } from './ui/components';
 import { brandGradient, colors } from './ui/theme';
 
@@ -32,6 +33,7 @@ program.configureHelp({
     console.log(brandGradient('│ ') + colors.secondary('simulate') + colors.muted('                 Generate mock errors for testing'));
     console.log(brandGradient('│ ') + colors.secondary('stats') + colors.muted('                   Display session statistics'));
     console.log(brandGradient('│ ') + colors.secondary('voice') + colors.muted('                   Configure voice alerts'));
+    console.log(brandGradient('│ ') + colors.secondary('uninstall') + colors.muted('               Remove all configuration'));
     console.log(brandGradient('│'));
     console.log(brandGradient('└' + '─'.repeat(49)));
     
@@ -108,5 +110,10 @@ program
   .option('--test', 'Test voice output')
   .option('--configure', 'Interactive voice configuration')
   .action(voiceCommand);
+
+program
+  .command('uninstall')
+  .description('Remove all EdgeCLI configuration')
+  .action(uninstallCommand);
 
 program.parse();
