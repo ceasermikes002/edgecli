@@ -1,0 +1,12 @@
+{
+  "name": "demo-buggy-app",
+  "version": "1.0.0",
+  "description": "Demo application with intentional bugs for Gemini Triage Agent",
+  "main": "buggy-app.js",
+  "scripts": {
+    "start": "node buggy-app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
