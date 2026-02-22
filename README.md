@@ -4,7 +4,8 @@ AI-powered CLI tool for intelligent log analysis and incident triage using Googl
 
 Built for HackLondon 2026 :)
 
-**npm Package:** [@ceasermikes/edgecli](https://www.npmjs.com/package/@ceasermikes/edgecli)
+**npm Package:** [@ceasermikes/edgecli](https://www.npmjs.com/package/@ceasermikes/edgecli)  
+**Documentation:** [https://ceasermikes002.github.io/edgecli/](https://ceasermikes002.github.io/edgecli/)
 
 ## Features
 
@@ -16,6 +17,7 @@ Built for HackLondon 2026 :)
 - 📊 Transparent metrics (latency, tokens)
 - 🎭 Mock simulation mode for testing
 - ✨ Beautiful gradient UI with brand colors
+- 🌍 **Language-agnostic** - Works with ANY programming language!
 
 ## Installation
 
@@ -144,6 +146,101 @@ edgecli voice --disable
 edgecli voice --test
 ```
 
+## Language Support
+
+EdgeCLI is **language-agnostic** - it works with ANY programming language! If your application writes to stdout/stderr, EdgeCLI can monitor it.
+
+### Supported Languages & Frameworks
+
+**JavaScript/TypeScript:**
+```bash
+# Node.js / Express
+npm run dev 2>&1 | edgecli watch --stdin --voice
+
+# NestJS
+npm run start:dev 2>&1 | edgecli watch --stdin --voice
+
+# Next.js
+npm run dev 2>&1 | edgecli watch --stdin --voice
+```
+
+**Python:**
+```bash
+# Django
+python manage.py runserver 2>&1 | edgecli watch --stdin --voice
+
+# Flask
+flask run 2>&1 | edgecli watch --stdin --voice
+
+# FastAPI
+uvicorn main:app --reload 2>&1 | edgecli watch --stdin --voice
+```
+
+**Java:**
+```bash
+# Spring Boot
+./mvnw spring-boot:run 2>&1 | edgecli watch --stdin --voice
+
+# Gradle
+./gradlew bootRun 2>&1 | edgecli watch --stdin --voice
+```
+
+**Go:**
+```bash
+go run main.go 2>&1 | edgecli watch --stdin --voice
+```
+
+**Ruby:**
+```bash
+# Rails
+rails server 2>&1 | edgecli watch --stdin --voice
+```
+
+**PHP:**
+```bash
+# Laravel
+php artisan serve 2>&1 | edgecli watch --stdin --voice
+```
+
+**Rust:**
+```bash
+cargo run 2>&1 | edgecli watch --stdin --voice
+```
+
+**C# / .NET:**
+```bash
+dotnet run 2>&1 | edgecli watch --stdin --voice
+```
+
+**Elixir:**
+```bash
+# Phoenix
+mix phx.server 2>&1 | edgecli watch --stdin --voice
+```
+
+**Docker:**
+```bash
+docker logs -f container_name 2>&1 | edgecli watch --stdin --voice
+```
+
+**Kubernetes:**
+```bash
+kubectl logs -f pod-name 2>&1 | edgecli watch --stdin --voice
+```
+
+**System Logs:**
+```bash
+tail -f /var/log/syslog 2>&1 | edgecli watch --stdin --voice
+```
+
+### Why It Works with Any Language
+
+EdgeCLI analyzes **text output**, not code:
+- ✅ Reads stdout/stderr from any application
+- ✅ AI understands error patterns across all languages
+- ✅ Recognizes stack traces, exceptions, and error messages universally
+- ✅ Automatically detects language and framework from logs
+
 ## How It Works
 
 1. **Light Triage**: Quick classification (severity, hypothesis, confidence)
@@ -182,16 +279,17 @@ edgecli watch app.log
 
 ## Documentation
 
-Comprehensive HTML documentation is available in the `docs/` folder. Open `docs/index.html` in your browser for:
+Comprehensive HTML documentation is available at: **[https://ceasermikes002.github.io/edgecli/](https://ceasermikes002.github.io/edgecli/)**
+
+Or view locally by opening `docs/index.html` in your browser for:
 
 - Complete command reference
 - Voice alerts guide
 - Configuration options
+- Language support examples
 - Troubleshooting tips
 - API reference
 - Examples and use cases
-
-Or view online at: [EdgeCLI Documentation](#) (coming soon)
 
 ## Development
 

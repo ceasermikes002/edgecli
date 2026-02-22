@@ -18,6 +18,7 @@
             <li><a href="#overview">Overview</a></li>
             <li><a href="#installation">Installation</a></li>
             <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#language-support">Language Support</a></li>
             <li><a href="#commands">Commands</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#voice-alerts">Voice Alerts</a></li>
@@ -39,6 +40,11 @@
         <section id="overview" class="section">
             <h1>EdgeCLI Documentation</h1>
             <p class="lead">AI-powered CLI tool for intelligent log analysis and incident triage using Google Gemini API.</p>
+            
+            <div class="info-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-bottom: 2rem;">
+                <h4 style="color: white; margin-top: 0;">🌍 Language-Agnostic</h4>
+                <p style="color: white; margin-bottom: 0;">EdgeCLI works with <strong>ANY programming language</strong>! Python, Java, Go, Rust, Ruby, PHP, C#, Elixir, and more. If your application writes to stdout/stderr, EdgeCLI can monitor it.</p>
+            </div>
             
             <div class="feature-grid">
                 <div class="feature-card">
@@ -152,6 +158,173 @@ edgecli watch app.log
 
 # Watch live output
 npm run dev 2>&1 | edgecli watch --stdin</code></pre>
+            </div>
+        </section>
+
+        <!-- Language Support Section -->
+        <section id="language-support" class="section">
+            <h2>Language Support</h2>
+            <p class="lead">EdgeCLI is language-agnostic - it works with ANY programming language!</p>
+            
+            <div class="info-box">
+                <h4 style="color: white; margin-top: 0;">How It Works</h4>
+                <p style="color: white;">EdgeCLI analyzes <strong>text output</strong>, not code. It reads stdout/stderr from any application and uses AI to understand error patterns across all languages.</p>
+                <ul style="color: white;">
+                    <li>✅ Reads stdout/stderr from any application</li>
+                    <li>✅ AI understands error patterns across all languages</li>
+                    <li>✅ Recognizes stack traces and exceptions universally</li>
+                    <li>✅ Automatically detects language and framework</li>
+                </ul>
+            </div>
+
+            <h3>Supported Languages</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Language</th>
+                        <th>Frameworks</th>
+                        <th>Example Command</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JavaScript/TypeScript</td>
+                        <td>Node.js, Express, NestJS, Next.js</td>
+                        <td><code>npm run dev 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>Python</td>
+                        <td>Django, Flask, FastAPI</td>
+                        <td><code>python manage.py runserver 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>Spring Boot, Micronaut</td>
+                        <td><code>./mvnw spring-boot:run 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>Go</td>
+                        <td>Gin, Echo, Fiber</td>
+                        <td><code>go run main.go 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>Ruby</td>
+                        <td>Rails, Sinatra</td>
+                        <td><code>rails server 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>PHP</td>
+                        <td>Laravel, Symfony</td>
+                        <td><code>php artisan serve 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>Rust</td>
+                        <td>Actix, Rocket</td>
+                        <td><code>cargo run 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>C# / .NET</td>
+                        <td>ASP.NET Core</td>
+                        <td><code>dotnet run 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                    <tr>
+                        <td>Elixir</td>
+                        <td>Phoenix</td>
+                        <td><code>mix phx.server 2>&1 | edgecli watch --stdin --voice</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Beyond Application Code</h3>
+            <p>EdgeCLI also works with:</p>
+            
+            <div class="voice-grid">
+                <div class="voice-category">
+                    <h4>Container Platforms</h4>
+                    <ul>
+                        <li><strong>Docker:</strong> <code>docker logs -f container_name 2>&1 | edgecli watch --stdin</code></li>
+                        <li><strong>Kubernetes:</strong> <code>kubectl logs -f pod-name 2>&1 | edgecli watch --stdin</code></li>
+                        <li><strong>Docker Compose:</strong> <code>docker-compose logs -f 2>&1 | edgecli watch --stdin</code></li>
+                    </ul>
+                </div>
+                <div class="voice-category">
+                    <h4>System Logs</h4>
+                    <ul>
+                        <li><strong>Syslog:</strong> <code>tail -f /var/log/syslog | edgecli watch --stdin</code></li>
+                        <li><strong>Nginx:</strong> <code>tail -f /var/log/nginx/error.log | edgecli watch --stdin</code></li>
+                        <li><strong>Apache:</strong> <code>tail -f /var/log/apache2/error.log | edgecli watch --stdin</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="voice-grid">
+                <div class="voice-category">
+                    <h4>Database Logs</h4>
+                    <ul>
+                        <li><strong>PostgreSQL:</strong> <code>tail -f /var/log/postgresql/postgresql.log | edgecli watch --stdin</code></li>
+                        <li><strong>MySQL:</strong> <code>tail -f /var/log/mysql/error.log | edgecli watch --stdin</code></li>
+                        <li><strong>MongoDB:</strong> <code>tail -f /var/log/mongodb/mongod.log | edgecli watch --stdin</code></li>
+                    </ul>
+                </div>
+                <div class="voice-category">
+                    <h4>Build Tools</h4>
+                    <ul>
+                        <li><strong>Webpack:</strong> <code>webpack --watch 2>&1 | edgecli watch --stdin</code></li>
+                        <li><strong>Maven:</strong> <code>mvn clean install 2>&1 | edgecli watch --stdin</code></li>
+                        <li><strong>Gradle:</strong> <code>gradle build 2>&1 | edgecli watch --stdin</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Real-World Examples</h3>
+            
+            <div class="command-card">
+                <h4>Python Django Error</h4>
+                <div class="code-block">
+                    <pre><code>$ python manage.py runserver 2>&1 | edgecli watch --stdin --voice
+
+# Django outputs:
+django.db.utils.OperationalError: FATAL: password authentication failed
+
+# EdgeCLI triages:
+SEVERITY: CRITICAL
+Hypothesis: PostgreSQL authentication failure
+Root Cause: Database password mismatch in settings.py
+Suggested Fix: Update DATABASES configuration</code></pre>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>Java Spring Boot Error</h4>
+                <div class="code-block">
+                    <pre><code>$ ./mvnw spring-boot:run 2>&1 | edgecli watch --stdin --voice
+
+# Spring outputs:
+NoSuchBeanDefinitionException: No qualifying bean of type 'UserService'
+
+# EdgeCLI triages:
+SEVERITY: HIGH
+Hypothesis: Spring dependency injection failure
+Root Cause: Missing @Service annotation
+Suggested Fix: Add @Service to UserService class</code></pre>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>Go Application Error</h4>
+                <div class="code-block">
+                    <pre><code>$ go run main.go 2>&1 | edgecli watch --stdin --voice
+
+# Go outputs:
+panic: runtime error: nil pointer dereference
+
+# EdgeCLI triages:
+SEVERITY: CRITICAL
+Hypothesis: Nil pointer dereference
+Root Cause: Variable not initialized before use
+Suggested Fix: Check for nil before dereferencing</code></pre>
+                </div>
             </div>
         </section>
 
